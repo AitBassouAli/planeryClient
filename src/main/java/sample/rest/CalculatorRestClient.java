@@ -4,9 +4,9 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import main.java.sample.dto.MultiplicationRequest;
+import main.java.sample.dto.MultiplicationResponse;
 
 public class CalculatorRestClient {
 
@@ -15,10 +15,10 @@ public class CalculatorRestClient {
 
     private Client client = ClientBuilder.newClient();
 
-    public Response multiply(MultiplicationRequest request) {
+    public MultiplicationResponse multiply(MultiplicationRequest request) {
         return client
                 .target(REST_URI + "/multiply")
                 .request(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(request, MediaType.APPLICATION_JSON));
+                .post(Entity.entity(request, MediaType.APPLICATION_JSON), MultiplicationResponse.class);
     }
 }

@@ -3,9 +3,8 @@ package sample.service.impl;
 import sample.rest.CalculatorRestClient;
 import sample.service.MultiplicationService;
 import main.java.sample.dto.MultiplicationRequest;
+import main.java.sample.dto.MultiplicationResponse;
 import main.java.sample.builder.MultiplicationRequestBuilder;
-
-import javax.ws.rs.core.Response;
 
 public class defaultMultiplicationService implements MultiplicationService {
 
@@ -20,7 +19,7 @@ public class defaultMultiplicationService implements MultiplicationService {
                 .multiply(number)
                 .by(multiplier)
                 .build();
-        Response response = calculatorRestClient.multiply(request);
-        return 0;
+        MultiplicationResponse response = calculatorRestClient.multiply(request);
+        return response.getMultiplicationResult();
     }
 }
